@@ -16,7 +16,7 @@ public class Post {
     private String title;
     private String text;
     private LocalDateTime date;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne
     private Author author;
 
     public Post(String title, String text, LocalDateTime date, Author author) {
@@ -55,4 +55,14 @@ public class Post {
         this.author = author;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", author=" + author.getName() +
+                '}';
+    }
 }
