@@ -13,8 +13,10 @@ public class Author {
     private String name;
     private String location;
     private int age;
-    @OneToMany(mappedBy = "author",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "author",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     private List<Post> posts = new ArrayList<>();
+    @OneToMany(mappedBy = "author")
+    private List<Comment> comments = new ArrayList<>();
 
     public Author(String name, String location, int age) {
         this.name = name;

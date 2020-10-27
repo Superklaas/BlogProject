@@ -5,7 +5,9 @@ import be.vdab.domain.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -18,6 +20,8 @@ public class Post {
     private LocalDateTime date;
     @ManyToOne
     private Author author;
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments = new ArrayList<>();
 
     public Post(String title, String text, LocalDateTime date, Author author) {
         this.title = title;

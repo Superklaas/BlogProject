@@ -21,9 +21,9 @@ public class TestCRUD {
         PostService postService = new PostService();
         postService.setPostRepository(postRepository);
 
-        // test createAuthor
+/*        // test createAuthor
         Author klaas = new Author("Klaas","Belgium",35);
-        authorService.createAuthor(klaas);
+        authorService.createAuthor(klaas);*/
 
         // test readListAuthors
         List<Author> authorList = authorService.readListAuthors("klaas");
@@ -31,17 +31,17 @@ public class TestCRUD {
             System.out.println(author.toString());
         }
 
-        // test updateAuthor
+/*        // test updateAuthor
         Author author = authorList.get(0);
         author.setAge(36);
         authorService.updateAuthor(author);
 
         // test deleteAuthor
-        authorService.deleteAuthor(author);
+        authorService.deleteAuthor(author);*/
 
-        // test createPost
+/*        // test createPost
         Post postKlaas = new Post("test","test",LocalDateTime.now(),authorList.get(0));
-        postService.createPost(postKlaas);
+        postService.createPost(postKlaas);*/
 
         // test readListPosts
         List<Post> postList = postService.readListPosts("test");
@@ -56,7 +56,6 @@ public class TestCRUD {
 
         // test deletePost
         postService.deletePost(post);
-
 
     }
 }

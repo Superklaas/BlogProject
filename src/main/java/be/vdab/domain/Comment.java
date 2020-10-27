@@ -1,28 +1,31 @@
 package be.vdab.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Comment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
     private Date date;
+    @ManyToOne
     private Author author;
+    @ManyToOne
     private Post post;
 
-    public Comment() {};
     public Comment(String text, Date date, Author author, Post post) {
         this.text = text;
         this.date = date;
         this.author = author;
         this.post = post;
     }
+    public Comment() {};
 
     public int getId() {
         return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public String getText() {
         return text;
@@ -51,7 +54,13 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "On " + date + ", " + author.getName() + " commented: '" + text + "'";
+        return "Comment{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", author=" + author +
+                ", post=" + post +
+                '}';
     }
 }
 
