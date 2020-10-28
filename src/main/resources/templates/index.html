@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="header :: common_header(~{::title},~{::script})">
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+</head>
+<body>
+<div th:insert="header :: navbar"></div>
+<h1>Welcome to my blog</h1>
+In the menu, you can get an overview of all the posts and authors.<br>
+You can edit or delete existing posts or add new posts.<br>
+You can edit or delete existing authors or add new authors.<br>
+</body>
+</html>

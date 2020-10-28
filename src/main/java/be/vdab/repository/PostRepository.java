@@ -12,10 +12,6 @@ public class PostRepository {
 
     private EntityManager em;
 
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
-    }
-
     public void createPost(Post post) {
         em = EntityManagerProvider.getEM();
         EntityTransaction tx = em.getTransaction();

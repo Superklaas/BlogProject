@@ -20,7 +20,7 @@ public class Post {
     private LocalDateTime date;
     @ManyToOne
     private Author author;
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
     public Post(String title, String text, LocalDateTime date, Author author) {
@@ -67,6 +67,7 @@ public class Post {
                 ", text='" + text + '\'' +
                 ", date=" + date +
                 ", author=" + author.getName() +
+                ", comments=" + comments +
                 '}';
     }
 }

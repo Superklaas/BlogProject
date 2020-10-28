@@ -2,7 +2,9 @@ package be.vdab.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Author {
@@ -15,8 +17,8 @@ public class Author {
     private int age;
     @OneToMany(mappedBy = "author",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     private List<Post> posts = new ArrayList<>();
-    @OneToMany(mappedBy = "author")
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "author",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
+    private Set<Comment> comments = new HashSet<>();
 
     public Author(String name, String location, int age) {
         this.name = name;
@@ -49,6 +51,14 @@ public class Author {
         this.posts = posts;
     }
 
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
@@ -57,6 +67,7 @@ public class Author {
                 ", location='" + location + '\'' +
                 ", age=" + age +
                 ", posts=" + posts +
+                ", comments=" + comments +
                 '}';
     }
 }

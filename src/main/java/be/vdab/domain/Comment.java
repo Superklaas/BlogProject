@@ -1,6 +1,7 @@
 package be.vdab.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -10,13 +11,13 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
-    private Date date;
+    private LocalDateTime date;
     @ManyToOne
     private Author author;
     @ManyToOne
     private Post post;
 
-    public Comment(String text, Date date, Author author, Post post) {
+    public Comment(String text, LocalDateTime date, Author author, Post post) {
         this.text = text;
         this.date = date;
         this.author = author;
@@ -33,10 +34,10 @@ public class Comment {
     public void setText(String text) {
         this.text = text;
     }
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
     public Author getAuthor() {
@@ -58,8 +59,8 @@ public class Comment {
                 "id=" + id +
                 ", text='" + text + '\'' +
                 ", date=" + date +
-                ", author=" + author +
-                ", post=" + post +
+                ", author=" + author.getName() +
+                ", post=" + post.getTitle() +
                 '}';
     }
 }
