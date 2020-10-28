@@ -4,11 +4,15 @@ import be.vdab.domain.Author;
 import be.vdab.domain.Post;
 import be.vdab.repository.AuthorRepository;
 import be.vdab.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PostService {
 
+    @Autowired
     PostRepository postRepository;
 
     public void setPostRepository(PostRepository postRepository) {
@@ -24,9 +28,14 @@ public class PostService {
         return post;
     }
 
+    public List<Post> readAllPosts() {
+        List<Post> posts = postRepository.readAllPosts();
+        return posts;
+    }
+
     public List<Post> readListPosts(String title) {
-        List<Post> postList = postRepository.readListPosts(title);
-        return postList;
+        List<Post> posts = postRepository.readListPosts(title);
+        return posts;
     }
 
     public void updatePost(Post post) {

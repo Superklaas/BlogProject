@@ -2,12 +2,15 @@ package be.vdab.repository;
 
 import be.vdab.connection.EntityManagerProvider;
 import be.vdab.domain.Post;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
+@Repository
 public class PostRepository {
 
     private EntityManager em;
@@ -28,12 +31,20 @@ public class PostRepository {
         return post;
     }
 
+    public List<Post> readAllPosts() {
+        em = EntityManagerProvider.getEM();
+        Query query = em.createQuery("select p from Post p");
+        List<Post> posts = query.getResultList();
+        em.close();
+        return posts;
+    }
+
     public List<Post> readListPosts(String title) {
         em = EntityManagerProvider.getEM();
         Query query = em.createQuery("select p from Post p where p.title like '%" + title + "%'");
-        List<Post> postList = query.getResultList();
+        List<Post> posts = query.getResultList();
         em.close();
-        return postList;
+        return posts;
     }
 
     public void updatePost(Post post) {

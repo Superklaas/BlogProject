@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head  th:replace="header :: common_header(~{::title},~{::script})">
     <meta charset="UTF-8">
-    <title>Homepage</title>
+    <title>Homepage blog</title>
     <script>
         $(function () {
             $('[data-toggle="popover"]').popover()
@@ -11,9 +11,10 @@
 </head>
 <body>
 <div th:insert="header :: navbar"></div>
-<h1>Welcome to my blog</h1>
-In the menu, you can get an overview of all the posts and authors.<br>
-You can edit or delete existing posts or add new posts.<br>
-You can edit or delete existing authors or add new authors.<br>
+<div class="body">
+    <h1>Welcome to my blog</h1>
+    In the menu, you can get an overview of all the posts on my blog.<br>
+    You can add new posts or write comments to existing posts.<br>
+</div>
 </body>
 </html>

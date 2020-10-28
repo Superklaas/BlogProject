@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: common_header(~{::title},~{::script})">
+    <meta charset="UTF-8">
+    <title>readAllPosts</title>
+    <script>
+        function showAlert() {
+            $('.toast').toast('show')
+        }
+    </script>
+</head>
+<body>
+<div th:insert="header :: navbar"/>
+<div class="body">
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="post:${posts}">
+            <td th:text="${post.getTitle()}">Title</td>
+            <td th:text="${post.getText()}">Text</td>
+            <td th:text="${post.getDate().toString()}">Date</td>
+            <td th:text="${post.getAuthor().getName()}">Author</td>
+            <td>
+                <a class="btn btn-primary" type="button">edit</a>
+                <a class="btn btn-warning" type="button">delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

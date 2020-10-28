@@ -2,10 +2,12 @@ package be.vdab.repository;
 
 import be.vdab.connection.EntityManagerProvider;
 import be.vdab.domain.Author;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Repository
 public class AuthorRepository {
 
     private EntityManager em;
